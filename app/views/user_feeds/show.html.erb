@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      User feed #<%= @the_user_feed.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/user_feeds">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_user_feed/<%= @the_user_feed.id %>">
+          Delete user feed
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_user_feed.user_id %>
+      </dd>
+
+      <dt>
+        Post
+      </dt>
+      <dd>
+        <%= @the_user_feed.post_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user_feed.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user_feed.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit user feed
+    </h2>
+
+    <form action="/modify_user_feed/<%= @the_user_feed.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_user_feed.user_id %>">
+      </div>
+
+      <div>
+        <label for="post_id_box">
+          Post
+        </label>
+
+        <input type="text" id="post_id_box" name="query_post_id" value="<%= @the_user_feed.post_id %>">
+      </div>
+
+      <button>
+        Update user feed
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

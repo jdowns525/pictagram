@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all user feeds
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new user feed
+    </h2>
+
+    <form action="/insert_user_feed" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="post_id_box">
+          Post
+        </label>
+
+        <input type="text" id="post_id_box" name="query_post_id">
+      </div>
+
+      <button>
+        Create user feed
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Post
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_user_feeds.each do |a_user_feed| %>
+      <tr>
+        <td>
+          <%= a_user_feed.id %>
+        </td>
+
+        <td>
+          <%= a_user_feed.user_id %>
+        </td>
+
+        <td>
+          <%= a_user_feed.post_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_user_feed.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_user_feed.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/user_feeds/<%= a_user_feed.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
